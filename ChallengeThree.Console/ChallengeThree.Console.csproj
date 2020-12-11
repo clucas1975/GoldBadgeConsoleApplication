@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{30EBBA43-E18F-4A9F-B0AB-B4427CA9888E}</ProjectGuid>
+    <ProjectGuid>{0B300BB2-9CB1-4309-B49D-0FB13C95B8BB}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>GoldBadgeApplicationRepository</RootNamespace>
-    <AssemblyName>GoldBadgeApplicationRepository</AssemblyName>
+    <RootNamespace>ChallengeThree.Console</RootNamespace>
+    <AssemblyName>ChallengeThree.Console</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MenuContent.cs" />
-    <Compile Include="MenuRepo.cs" />
+    <Compile Include="BadgesUI.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

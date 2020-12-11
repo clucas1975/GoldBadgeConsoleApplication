@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GoldBadgeConsoleApplication
+namespace Badges.Repository
 {
-    class Program
+    class Claims
     {
         static void Main(string[] args)
         {
-            MenuUI menu = new MenuUI();
-            menu.Run();
         }
     }
 }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{30EBBA43-E18F-4A9F-B0AB-B4427CA9888E}</ProjectGuid>
+    <ProjectGuid>{E6A0705F-C5E9-431F-9FF3-4D5C2E3DA60F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>GoldBadgeApplicationRepository</RootNamespace>
-    <AssemblyName>GoldBadgeApplicationRepository</AssemblyName>
+    <RootNamespace>Badges.Console</RootNamespace>
+    <AssemblyName>Badges.Console</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MenuContent.cs" />
-    <Compile Include="MenuRepo.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="ClaimsUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
