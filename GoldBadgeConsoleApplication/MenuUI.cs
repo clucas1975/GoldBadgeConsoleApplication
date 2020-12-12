@@ -161,7 +161,26 @@ namespace GoldBadgeConsoleApplication
         //Delete Existing Content
         private void DeleteExistingContent() 
         {
-        
+            DisplayAllContent();
+
+            //Get the meal name they want to remove
+            Console.WriteLine("\nEnter the meal name of the content (menu) you want to remove");
+
+            string input = Console.ReadLine();
+
+            // Call the delete method
+            bool wasDeleted = _menuRepo.RemoveContentFromList(input);
+
+            // If the content was deleted, say so
+            // Otherwise state it could not be deleted
+            if (wasDeleted) 
+            {
+                Console.WriteLine("The content was successfully deleted.");
+            }
+            else 
+            {
+                Console.WriteLine("The content could not be deleted.");
+            }
         }
 
         //See Method
