@@ -14,6 +14,7 @@ namespace GoldBadgeConsoleApplication
         // Method that starts or runs the application
         public void Run()
         {
+            SeedContentList();
             Menu();
         }
 
@@ -79,6 +80,7 @@ namespace GoldBadgeConsoleApplication
         // Create new MenuContent
         private void CreateNewContent()
         {
+            Console.Clear();
             MenuContent newContent = new MenuContent();
 
             //Meal Name
@@ -93,7 +95,7 @@ namespace GoldBadgeConsoleApplication
             //Meal Price
             Console.WriteLine("Enter the meal price for the content (1.10d, 2.30d etc):");
             string MealPriceAsString = Console.ReadLine();
-            newContent.MealPrice = double.Parse(MealPriceAsString);
+            newContent.MealPrice = decimal.Parse(MealPriceAsString);
 
             //Comes With Sides
             Console.WriteLine("Does this come with sides? (y/n)");
@@ -115,19 +117,65 @@ namespace GoldBadgeConsoleApplication
         //View Current MenuContent that is saved
         private void DisplayAllContent() 
         {
-            
+            Console.Clear();
+
+            List<MenuContent> listOfContent = _menuRepo.GetMenuContents();
+
+            foreach (MenuContent content in listOfContent) 
+            {
+                Console.WriteLine($"MealName: {content.MealName}\n" +
+                    $"MealNumber: {content.MealNumber}\n" +
+                    $"MealPrice: {content.MealPrice}\n" +
+                    $"ComesWithSides: {content.ComesWithSides}");
+            }
         }
 
         //View existing Content by MealName
         private void DisplayContentByMealName() 
         {
-            
+            Console.Clear();
+            // Prompt the user to give me a meal name
+            Console.WriteLine("Enter the meal name that you would like to order:");
+
+
+            // Get the customer's input
+            string mealName = Console.ReadLine();
+
+            // Find the content by that meal name
+           MenuContent content = _menuRepo.GetContentByMealName(mealName);
+
+            // Display said content if it isn't null
+            if (content != null) 
+            {
+                Console.WriteLine($"Meal Name: {content.MealName}\n" +
+                    $"Meal Number: {content.MealNumber}\n" +
+                    $"Meal Price: {content.MealPrice}\n" +
+                    $"Comes With Size: {content.ComesWithSides}");
+            }
+            else 
+            {
+                Console.WriteLine("No content by that meal name.");
+            }
         }
 
         //Delete Existing Content
         private void DeleteExistingContent() 
         {
         
+        }
+
+        //See Method
+        private void SeedContentList() 
+        {
+            MenuContent hamburger = new MenuContent("Hamburger", 1, 1.10m, false);
+            MenuContent chickenSandwich = new MenuContent("Chicken Sandwich", 2, 1.50m, false);
+            MenuContent tBoneSteak = new MenuContent("T-Bone Steak", 10, 20.00m, true);
+            MenuContent bbqChickenBreast = new MenuContent("BBQ Chicken Breast", 5, 10.00m, true);
+
+            _menuRepo.AddContentToList(hamburger);
+            _menuRepo.AddContentToList(chickenSandwich);
+            _menuRepo.AddContentToList(tBoneSteak);
+            _menuRepo.AddContentToList(bbqChickenBreast);
         }
 
     }

@@ -63,7 +63,7 @@ namespace GoldBadgeApplicationRepository
         {
             foreach(MenuContent content in _listOfContent) 
             {
-                if(content.MealName == mealName)
+                if(content.MealName.ToLower() == mealName.ToLower())
                 {
                     return content;
                 }

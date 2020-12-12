@@ -11,12 +11,12 @@ namespace GoldBadgeApplicationRepository
         // Plain Old C# Object -- POCO
         public string MealName { get; set; }
         public int MealNumber { get; set; }
-        public double MealPrice { get; set; }
+        public decimal MealPrice { get; set; }
         public bool ComesWithSides { get; set; }
 
         public MenuContent() {}
 
-        public MenuContent(string mealName, int mealNumber, double mealPrice, bool comesWithSides) 
+        public MenuContent(string mealName, int mealNumber, decimal mealPrice, bool comesWithSides) 
 
         {
             MealName = mealName;
