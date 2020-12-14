@@ -1,15 +1,16 @@
 ﻿using System;
+using ChallengeTwo.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Badges.UnitTest
+namespace ChallengeTwo.UnitTest
 {
     [TestClass]
     public class ClaimsTests
     {
         [TestMethod]
-        public void SetClaimType_ShouldSetCorrectString()
+        public void SetMealName_ShouldSetCorrectString()
         {
-            Claims content = new Claims();
+             Claims content = new Claims();
             content.ClaimType = "Car";
 
             string expected = "Car";
