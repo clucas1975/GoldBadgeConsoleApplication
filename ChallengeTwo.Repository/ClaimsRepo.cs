@@ -28,10 +28,10 @@ namespace ChallengeTwo.Repository
         }
 
         //Update 
-        public bool UpdateExistingContent(string claimType, Claims newContent) 
+        public bool UpdateExistingContent(string originalClaimType, Claims newContent) 
         {
             //Find the content
-            Claims oldContent = GetContentByClaimType(claimType);
+            Claims oldContent = GetContentByClaimType(originalClaimType);
 
             //Update the content
             if(oldContent != null) 
