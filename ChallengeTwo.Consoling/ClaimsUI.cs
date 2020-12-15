@@ -31,7 +31,7 @@ namespace ChallengeTwo.Consoling
                     "1. Create New Content\n" +
                     "2. View All Content\n" +
                     "3. View Content By ClaimType\n" +
-                    "4. Update Existing Content" +
+                    "4. Update Existing Content\n" +
                     "5. Delete Existing Content\n" +
                     "6. Exit");
 
@@ -103,7 +103,7 @@ namespace ChallengeTwo.Consoling
             newContent.ClaimAmount = decimal.Parse(ClaimAmountAsString);
 
             //Date of Accident
-            //Create date time 2018-25-04
+            //Create date time 
             DateTime date = new DateTime(25/04/2018);
             //Converting to string format
             string date_str = date.ToString("dd/MM/yyyy");
@@ -281,9 +281,9 @@ namespace ChallengeTwo.Consoling
         //See Method
         private void SeedContentList() 
         {
-            Claims car = new Claims(1, "Car", "Car accident on 465", 400.00m, , DateTime.Today, true);
-            Claims home = new Claims(2, "Home", "House fire in kitchen", 4000.00m,  true);
-            Claims theft = new Claims(3, "Theft", "Stolen pancakes", 4.00m, false);
+            Claims car = new Claims(1, "Car", "Car accident on 465", 400.00m, DateTime.Today , DateTime.Today, true);
+            Claims home = new Claims(2, "Home", "House fire in kitchen", 4000.00m, DateTime.Now, DateTime.Today, true);
+            Claims theft = new Claims(3, "Theft", "Stolen pancakes", 4.00m, DateTime.Today, DateTime.Today, false);
 
 
 

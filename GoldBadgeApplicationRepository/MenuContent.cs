@@ -26,7 +26,6 @@ namespace GoldBadgeApplicationRepository
             MealNumber = mealNumber;
             Description = description;
             AListOfIngredients = aListOfIngredients;
-
             MealPrice = mealPrice;
            
         }

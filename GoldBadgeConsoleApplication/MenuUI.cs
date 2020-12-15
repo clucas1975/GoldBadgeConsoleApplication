@@ -92,24 +92,21 @@ namespace GoldBadgeConsoleApplication
             string MealNumberAsString = Console.ReadLine();
             newContent.MealNumber = int.Parse(MealNumberAsString);
 
+            //Description
+            Console.WriteLine("Enter the description of the Meal Name");
+            newContent.Description = Console.ReadLine();
+
+            //List of ingredients
+            Console.WriteLine("Enter the list of ingredients");
+            newContent.AListOfIngredients = Console.ReadLine();
+
             //Meal Price
             Console.WriteLine("Enter the meal price for the content (1.10m, 2.30m" +
                 " etc):");
             string MealPriceAsString = Console.ReadLine();
             newContent.MealPrice = decimal.Parse(MealPriceAsString);
 
-            //Comes With Sides
-            Console.WriteLine("Does this come with sides? (y/n)");
-            string comesWithSidesAsString = Console.ReadLine().ToLower();
-
-            if(comesWithSidesAsString == "y") 
-            {
-                newContent.ComesWithSides = true;
-            }
-            else 
-            {
-                newContent.ComesWithSides = false;
-            }
+           
 
             _menuRepo.AddContentToList(newContent);
 
@@ -127,8 +124,11 @@ namespace GoldBadgeConsoleApplication
             {
                 Console.WriteLine($"MealName: {content.MealName}\n" +
                     $"MealNumber: {content.MealNumber}\n" +
-                    $"MealPrice: {content.MealPrice}\n" +
-                    $"ComesWithSides: {content.ComesWithSides}");
+                    $"Description: {content.Description}\n" +
+                    $"AListOfIngredients: {content.AListOfIngredients}" +
+                    $"MealPrice: {content.MealPrice}");
+
+
             }
         }
 
@@ -149,10 +149,11 @@ namespace GoldBadgeConsoleApplication
             // Display said content if it isn't null
             if (content != null) 
             {
-                Console.WriteLine($"Meal Name: {content.MealName}\n" +
-                    $"Meal Number: {content.MealNumber}\n" +
-                    $"Meal Price: {content.MealPrice}\n" +
-                    $"Comes With Size: {content.ComesWithSides}");
+                Console.WriteLine($"MealName: {content.MealName}\n" +
+                    $"MealNumber: {content.MealNumber}\n" +
+                    $"Description: {content.Description}\n" +
+                    $"AListOfIngredients: {content.AListOfIngredients}" +
+                    $"MealPrice: {content.MealPrice}");
             }
             else 
             {
@@ -188,10 +189,10 @@ namespace GoldBadgeConsoleApplication
         //See Method
         private void SeedContentList() 
         {
-            MenuContent hamburger = new MenuContent("Hamburger", 1, 1.10m, false);
-            MenuContent chickenSandwich = new MenuContent("Chicken Sandwich", 2, 1.50m, false);
-            MenuContent tBoneSteak = new MenuContent("T-Bone Steak", 10, 20.00m, true);
-            MenuContent bbqChickenBreast = new MenuContent("BBQ Chicken Breast", 5, 10.00m, true);
+            MenuContent hamburger = new MenuContent("Hamburger", 1, "sandwich with beef patty on bun", "Comes with ketchup, mustard and pickles and french fries",  1.10m);
+            MenuContent chickenSandwich = new MenuContent("Chicken Sandwich", 2, "sandwich with fried or grilled chicken breast on bun", "comes with mayonaise and pickles and french fries", 1.50m);
+            MenuContent tBoneSteak = new MenuContent("T-Bone Steak", 10, "steak grilled to perfection", "comes with scallions and peppers with your choice of baked potato, or french fries",  20.00m);
+            MenuContent bbqChickenBreast = new MenuContent("BBQ Chicken Breast", 5, "grilled chicken breast on platter", "smothered with thick bbq sauce with your choice of baked potato, or french fries",  10.00m);
 
             _menuRepo.AddContentToList(hamburger);
             _menuRepo.AddContentToList(chickenSandwich);
