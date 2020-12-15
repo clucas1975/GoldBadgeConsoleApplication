@@ -93,7 +93,8 @@ namespace GoldBadgeConsoleApplication
             newContent.MealNumber = int.Parse(MealNumberAsString);
 
             //Meal Price
-            Console.WriteLine("Enter the meal price for the content (1.10m, 2.30m etc):");
+            Console.WriteLine("Enter the meal price for the content (1.10m, 2.30m" +
+                " etc):");
             string MealPriceAsString = Console.ReadLine();
             newContent.MealPrice = decimal.Parse(MealPriceAsString);
 
@@ -111,6 +112,7 @@ namespace GoldBadgeConsoleApplication
             }
 
             _menuRepo.AddContentToList(newContent);
+
 
         }
 

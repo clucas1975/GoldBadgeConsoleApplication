@@ -9,7 +9,7 @@ namespace ChallengeTwo.Consoling
 {
     class ClaimsUI
     {
-        private ClaimsRepo _claimsRepo = new ClaimsRepo();
+        private static ClaimsRepo _claimsRepo = new ClaimsRepo();
 
         // Method that starts or runs the application
         public void Run()
@@ -119,24 +119,14 @@ namespace ChallengeTwo.Consoling
             //Is it valid?
             Console.WriteLine("The claim is valid?(t/f)");
             string isValidAsString = Console.ReadLine().ToLower();
-
+          newContent.IsValid = false;
             if (isValidAsString == "y")
             {
                 newContent.IsValid = true;
             }
-            else
-            {
-                newContent.IsValid = false;
-            }
-
-            _claimRepo.AddContentToList(newContent);
-
-          
-           
-
             
 
-
+           _claimsRepo.AddContentToList(newContent);
         }
 
         //View current claims that are saved
@@ -291,7 +281,7 @@ namespace ChallengeTwo.Consoling
         //See Method
         private void SeedContentList() 
         {
-            Claims car = new Claims(1, "Car", "Car accident on 465", 400.00m, 2018, 04, 25, 2018, 04, 27 true);
+            Claims car = new Claims(1, "Car", "Car accident on 465", 400.00m, , DateTime.Today, true);
             Claims home = new Claims(2, "Home", "House fire in kitchen", 4000.00m,  true);
             Claims theft = new Claims(3, "Theft", "Stolen pancakes", 4.00m, false);
 
@@ -300,6 +290,7 @@ namespace ChallengeTwo.Consoling
             _claimsRepo.AddContentToList(car);
             _claimsRepo.AddContentToList(home);
             _claimsRepo.AddContentToList(theft);
+         
         }
     }
 
