@@ -16,7 +16,7 @@ namespace ChallengeTwo.UnitTest
             _repo = new ClaimsRepo();
             _content = new Claims();
 
-            _repo.AddContentToList(_content);
+            _repo.AddContentToQueue(_content);
         }
 
 
@@ -29,7 +29,7 @@ namespace ChallengeTwo.UnitTest
            ClaimsRepo repo = new ClaimsRepo();
 
             // Act --> Get/run the code we want to test
-            repo.AddContentToList(content);
+            repo.AddContentToQueue(content);
             Claims contentFromList = repo.GetContentByClaimType("Car");
 
             // Assert --> Verify the expected outcome
@@ -45,7 +45,7 @@ namespace ChallengeTwo.UnitTest
             ClaimsRepo repo = new ClaimsRepo();
 
             //Act
-            bool deleteResult = _repo.RemoveContentFromList(_content.ClaimType);
+            bool deleteResult = _repo.RemoveContentFromQueue(_content.ClaimType);
 
             // Assert
             Assert.IsTrue(deleteResult);

@@ -41,7 +41,6 @@ namespace ChallengeTwo.Consoling
                 switch (input)
                 {
                     case "1":
-
                         // Create New Content
                         CreateNewContent();
                         break;
@@ -84,6 +83,22 @@ namespace ChallengeTwo.Consoling
             Console.Clear();
             Claims newContent = new Claims();
 
+            //Do you want to deal with this claim? Yes, or no
+            Console.WriteLine("Do you want to deal with this claim now?(y/n)");
+            string DoYouWantToDealWithThisClaimAsString = Console.ReadLine().ToLower();
+            if(DoYouWantToDealWithThisClaimAsString == "y") 
+            {
+                newContent.DoYouWantToDealWithThisClaim = true;
+            }
+            else if(DoYouWantToDealWithThisClaimAsString == "n") 
+            {
+                newContent.DoYouWantToDealWithThisClaim = false;
+                Console.WriteLine("Thank you, have a nice day! Please close by pressing x");
+                string input = Console.ReadLine();
+            }
+
+             
+
             // Claim ID
             Console.WriteLine("Please enter the ID for the claim:");
             string ClaimIDAsString = Console.ReadLine();
@@ -124,18 +139,21 @@ namespace ChallengeTwo.Consoling
             {
                 newContent.IsValid = true;
             }
-            
+            else 
+            {
+                newContent.IsValid = false;
+            }
 
-           _claimsRepo.AddContentToList(newContent);
+           _claimsRepo.AddContentToQueue(newContent);
         }
 
         //View current claims that are saved
         private void DisplayAllContent() 
         {
             Console.Clear();
-            List<Claims> listOfContent = _claimsRepo.GetClaims();
+            Queue<Claims> queueOfContent = _claimsRepo.GetClaims();
 
-            foreach (Claims content in listOfContent) 
+            foreach (Claims content in queueOfContent) 
             {
                 Console.WriteLine($"ClaimID: {content.ClaimID}\n" +
                     $"ClaimType: {content.ClaimType}\n" +
@@ -215,16 +233,16 @@ namespace ChallengeTwo.Consoling
 
             //Date of Accident
             //Create date time 2018-25-04
-            DateTime date = new DateTime(25/04/2018);
+            DateTime date = new DateTime(2018, 04, 25);
             //Converting to string format
-            string date_str = date.ToString("dd/MM/yyyy");
-            Console.WriteLine(date_str);
+            string date_str = date.ToString("2018/04/25");
+            Console.WriteLine("2018/04/25");
 
             //Date of Claim
             //Create date time 2018-27-04
-            DateTime date1 = DateTime.Parse("dd/MM/yyyy");
+            DateTime date1 = new DateTime(2018, 04, 27);
             //Converting to string format
-            string date1_str = date.ToString("dd/MM/yyyy");
+            string date1_str = date.ToString("2018/04/27");
             Console.WriteLine(date_str);
 
             //Is it valid?
@@ -264,7 +282,7 @@ namespace ChallengeTwo.Consoling
             string input = Console.ReadLine();
 
             // Call the delete method
-            bool wasDeleted = _claimsRepo.RemoveContentFromList(input);
+            bool wasDeleted = _claimsRepo.RemoveContentFromQueue(input);
 
             // If the content was deleted, say so
             // Otherwise state it could not be deleted
@@ -281,15 +299,15 @@ namespace ChallengeTwo.Consoling
         //See Method
         private void SeedContentList() 
         {
-            Claims car = new Claims(1, "Car", "Car accident on 465", 400.00m, DateTime.Today , DateTime.Today, true);
-            Claims home = new Claims(2, "Home", "House fire in kitchen", 4000.00m, DateTime.Now, DateTime.Today, true);
-            Claims theft = new Claims(3, "Theft", "Stolen pancakes", 4.00m, DateTime.Today, DateTime.Today, false);
+            Claims car = new Claims(1, "Car", "Car accident on 465", 400.00m, new DateTime (2018, 04, 25), new DateTime (2018, 04, 27), true);
+            Claims home = new Claims(2, "Home", "House fire in kitchen", 4000.00m, new DateTime (2018, 04, 11), new DateTime (2018, 04, 12), true);
+            Claims theft = new Claims(3, "Theft", "Stolen pancakes", 4.00m, new DateTime (2018, 04, 27), new DateTime (2018, 06, 01), false);
 
 
 
-            _claimsRepo.AddContentToList(car);
-            _claimsRepo.AddContentToList(home);
-            _claimsRepo.AddContentToList(theft);
+            _claimsRepo.AddContentToQueue(car);
+            _claimsRepo.AddContentToQueue(home);
+            _claimsRepo.AddContentToQueue(theft);
          
         }
     }

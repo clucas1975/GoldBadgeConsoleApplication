@@ -8,12 +8,12 @@ namespace ChallengeTwo.Repository
 {
    public class ClaimsRepo
     {
-        private List<Claims> _listOfContent = new List<Claims>();
+        private Queue<Claims> _queueOfContent = new Queue<Claims>();
 
         //Create
-        public void AddContentToList(Claims content)
+        public void AddContentToQueue(Claims content)
         {
-            _listOfContent.Add(content);
+            _queueOfContent.Enqueue(content);
         }
 
         static void Main()
@@ -22,9 +22,9 @@ namespace ChallengeTwo.Repository
         }
 
         //Read
-        public List<Claims> GetClaims()
+        public Queue<Claims> GetClaims()
         {
-            return _listOfContent;
+            return _queueOfContent;
         }
 
         //Update 
@@ -54,7 +54,7 @@ namespace ChallengeTwo.Repository
 
 
         //Delete
-        public bool RemoveContentFromList(string claimType)
+        public bool RemoveContentFromQueue(string claimType)
         {
             Claims content = GetContentByClaimType(claimType);
 
@@ -64,10 +64,10 @@ namespace ChallengeTwo.Repository
                 return false;
             }
 
-            int initialCount = _listOfContent.Count;
-            _listOfContent.Remove(content);
+            int initialCount = _queueOfContent.Count;
+            _queueOfContent.Dequeue();
 
-            if (initialCount > _listOfContent.Count)
+            if (initialCount > _queueOfContent.Count)
             {
                 return true;
             }
@@ -80,7 +80,7 @@ namespace ChallengeTwo.Repository
         //Helper method
         public Claims GetContentByClaimType(string claimType)
         {
-            foreach (Claims content in _listOfContent)
+            foreach (Claims content in _queueOfContent)
             {
                 if (content.ClaimType == claimType)
                 {

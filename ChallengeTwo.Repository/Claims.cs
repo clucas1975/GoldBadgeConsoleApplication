@@ -10,6 +10,8 @@ namespace ChallengeTwo.Repository
     {
         
         // Plain Old C# Object
+        public bool DoYouWantToDealWithThisClaim { get; set; }
+
         public int ClaimID { get; set; }
 
         public string ClaimType { get; set; }
