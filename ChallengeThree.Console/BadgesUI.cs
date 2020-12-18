@@ -79,8 +79,8 @@ namespace ChallengeThree_Console
             Badges newContent = new Badges();
 
             //Door Name
-            
             Console.WriteLine("Enter the name for the door to access:");
+           
                        
             
 
@@ -95,19 +95,65 @@ namespace ChallengeThree_Console
         //Delete Doors
         private void DeleteDoors() 
         {
-        
+            _badgesRepo.GetKeyValuePairs();
+
+            Console.WriteLine("\nEnter the badge id you want to remove:");
+
+            string input = Console.ReadLine();
+            int BadgeID = int.Parse(input);
+            bool wasDeleted = _badgesRepo.RemoveDoor(BadgeID,"A1");
+
+            if (wasDeleted) 
+            {
+                Console.WriteLine("The content was successfully deleted.");
+            }
+            else 
+            {
+                Console.WriteLine("The content cannot be deleted.");
+            }
+
         }
 
         //Edit Doors
         private void EditDoors() 
         {
-            
+            //Display all content
+           
+            Badges newContent = new Badges();
+
+            // Badge ID
+            Console.WriteLine("Please enter the badge ID:");
+            string BadgeIDAsString = Console.ReadLine();
+            newContent.BadgeID = int.Parse(BadgeIDAsString);
+
+
+            //Ask for the type of door to update
+            Console.WriteLine("Enter the type of the door that you want to update:");
+
+            //Get that Type
+            string doorsToOpen = Console.ReadLine();
+
+
+
+
+            //We will build a new object
+           
+
+           
         }
 
         //See Method
         private void SeedContentList() 
+
+
         {
-            
+            Badges badge = new Badges(3000, new List<string> { "A1", "B1" });
+            Badges badge1 = new Badges(3000, new List<string> { "A1", "B1", "C3" });
+            Badges badge2 = new Badges(3007, new List<string> { "A1", "B1", "zoom317" });
+
+            _badgesRepo.AddContentToDictionary(badge);
+            _badgesRepo.AddContentToDictionary(badge1);
+            _badgesRepo.AddContentToDictionary(badge2);
         }
     }
 }

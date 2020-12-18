@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChallengeThree.Repository
 {
-    class BadgesRepo
+    public class BadgesRepo
     {
         private Dictionary<int, Badges>  _dictionaryOfBadges = new Dictionary<int, Badges>();
         int Count;
@@ -25,17 +25,8 @@ namespace ChallengeThree.Repository
         }
 
         //update doors
-        public bool UpdateDoors(int oldDictKey, Badges newBadge)
-        {
-            Badges oldBadges = GetBadgeByDictKey(oldDictKey);
-            if (oldBadges !=null)
-            {
-                oldBadges.BadgeID = newBadge.BadgeID;
-                oldBadges.ListOfDoorNames = newBadge.ListOfDoorNames;
-                return true;
-            }
-            return false;
-        }
+       
+        
         //helper method
         public Badges GetBadgeByDictKey(int dictKey)
         {
