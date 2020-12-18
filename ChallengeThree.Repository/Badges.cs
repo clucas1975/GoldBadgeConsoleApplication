@@ -11,14 +11,14 @@ namespace ChallengeThree.Repository
         //Plain Old C# Object
         public int BadgeID { get; set; }
 
-        public string ListOfDoorNames { get; set; }
+        public List<string> ListOfDoorNames { get; set; } = new List<string>();
 
         public Badges() {}
 
-        public Badges(int BadgeID, string ListOfDoorNames) 
+        public Badges(int badgeID, List<string> listOfDoorNames) 
         {
-            BadgeID = BadgeID;
-            ListOfDoorNames = ListOfDoorNames;
+            BadgeID = badgeID;
+            ListOfDoorNames = listOfDoorNames;
         }
        
     }

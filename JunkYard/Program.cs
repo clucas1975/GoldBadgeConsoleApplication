@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ChallengeThree.Repository;
 
-namespace ChallengeThree_Console
+namespace JunkYard
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Dictionary<int, Badges> badgesINDatabase = new Dictionary<int, Badges>();
+            Dictionary<int, Badge> badgesINDatabase = new Dictionary<int, Badge>();
 
-            Badges badge = new Badges(3000, new List<string> { "A1", "B1" });
-            Badges badge1 = new Badges(3000, new List<string> { "A1", "B1", "C3" });
-            Badges badge2 = new Badges(3007, new List<string> { "A1", "B1", "zoom317" });
+            Badge badge = new Badge(3000, new List<string> { "A1", "B1" });
+            Badge badge1 = new Badge(3000, new List<string> { "A1", "B1", "C3" });
+            Badge badge2 = new Badge(3007, new List<string> { "A1", "B1", "zoom317" });
 
             badgesINDatabase.Add(1, badge);
             badgesINDatabase.Add(2, badge1);
@@ -26,8 +25,8 @@ namespace ChallengeThree_Console
             foreach (var pair in badgesINDatabase)
             {
                 Console.WriteLine($"Dictionary Key: {pair.Key}");
-                Console.WriteLine($"Badge Id: {pair.Value.BadgeID}");
-                foreach (var door in pair.Value.ListOfDoorNames)
+                Console.WriteLine($"Badge Id: {pair.Value.BadgeId}");
+                foreach (var door in pair.Value.Doors)
                 {
                     Console.WriteLine($"Door Access: {door}");
                 }
@@ -50,10 +49,10 @@ namespace ChallengeThree_Console
             foreach (var value in badgesINDatabase.Values)
             {
 
-                if (value.BadgeID == 3007)
+                if (value.BadgeId == 3007)
                 {
-                    Console.WriteLine(value.BadgeID);
-                    foreach (var door in value.ListOfDoorNames)
+                    Console.WriteLine(value.BadgeId);
+                    foreach (var door in value.Doors)
                     {
                         Console.WriteLine(door);
                     }
@@ -61,6 +60,8 @@ namespace ChallengeThree_Console
             }
 
             Console.ReadKey();
+
+
 
         }
     }

@@ -93,7 +93,7 @@ namespace ChallengeTwo.Consoling
             else if(DoYouWantToDealWithThisClaimAsString == "n") 
             {
                 newContent.DoYouWantToDealWithThisClaim = false;
-                Console.WriteLine("Thank you, have a nice day! Please close by clicking on the X on the upper right corner.");
+                Console.WriteLine ("Have a nice day! Please click on the X on the upper right-hand corner to close");
                 string input = Console.ReadLine();
             }
 
