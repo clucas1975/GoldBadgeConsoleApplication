@@ -274,7 +274,8 @@ namespace ChallengeTwo.Consoling
         //Delete Existing Content
         private void DeleteExistingContent() 
         {
-            DisplayAllContent();
+            
+
 
             //Get the claim type they want to remove
             Console.WriteLine("\nEnter the claim type of the content (claim) you want to remove");

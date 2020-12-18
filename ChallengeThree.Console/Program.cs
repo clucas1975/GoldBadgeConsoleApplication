@@ -61,6 +61,9 @@ namespace ChallengeThree_Console
             }
 
             Console.ReadKey();
+            BadgesUI UI = new BadgesUI();
+            UI.Run();
+
 
         }
     }
